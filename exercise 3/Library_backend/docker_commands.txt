@@ -1,0 +1,64 @@
+=== COMANDOS DOCKER PARA LIBRARY_BACKEND ===
+
+=== INICIAR SERVICIOS ===
+docker-compose up -d
+# Inicia los contenedores en modo detached (background)
+# Usa este comando cuando quieras iniciar MySQL
+
+=== VER ESTADO ===
+docker ps
+# Muestra los contenedores que están corriendo
+# Verás library_mysql si está activo
+
+docker-compose ps
+# Muestra el estado de los servicios definidos en docker-compose.yml
+
+=== LOGS Y MONITOREO ===
+docker-compose logs mysql
+# Muestra los logs del servicio MySQL
+# Útil para ver errores o verificar que todo está bien
+
+docker-compose logs -f mysql
+# Sigue los logs en tiempo real (-f significa "follow")
+# Ctrl+C para salir
+
+=== DETENER SERVICIOS ===
+docker-compose down
+# Detiene los contenedores pero mantiene los datos
+
+docker-compose down -v
+# Detiene los contenedores Y borra los volúmenes (datos)
+# ¡CUIDADO! Esto borrará tu base de datos
+
+=== OTROS COMANDOS ÚTILES ===
+docker-compose restart mysql
+# Reinicia el servicio de MySQL si hay problemas
+
+docker exec -it library_mysql bash
+# Entra al contenedor de MySQL
+# Útil para ejecutar comandos MySQL directamente
+
+docker-compose config
+# Verifica que tu docker-compose.yml es válido
+
+=== PROCEDIMIENTO PASO A PASO ===
+1. Iniciar MySQL:
+   docker-compose up -d
+
+2. Verificar que está corriendo:
+   docker ps
+   docker-compose logs mysql
+
+3. Crear la base de datos con Sequelize:
+   npx sequelize-cli db:create
+
+4. Si hay problemas:
+   - Ver logs: docker-compose logs mysql
+   - Reiniciar: docker-compose restart mysql
+   - Último recurso: docker-compose down -v && docker-compose up -d
+
+=== NOTAS IMPORTANTES ===
+- Siempre verifica los logs si algo no funciona
+- No uses down -v a menos que quieras borrar todos los datos
+- Mantén Docker Desktop corriendo mientras trabajas
+- Los datos persisten aunque apagues el contenedor (a menos que uses -v)

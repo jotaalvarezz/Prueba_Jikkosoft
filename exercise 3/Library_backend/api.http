@@ -1,0 +1,247 @@
+### ========================================
+### LIBRARIES - Bibliotecas
+### ========================================
+
+### Obtener todas las bibliotecas
+GET http://localhost:5000/api/v1/libraries
+
+### Obtener biblioteca por ID (ID: 1 - Biblioteca Central)
+GET http://localhost:5000/api/v1/libraries/1
+
+### Obtener libros de una biblioteca (ID: 1)
+GET http://localhost:5000/api/v1/libraries/1/books
+
+### Crear una nueva biblioteca
+POST http://localhost:5000/api/v1/libraries
+Content-Type: application/json
+
+{
+  "name": "Biblioteca Norte",
+  "address": "Avenida Norte 456",
+  "email": "norte@biblioteca.com",
+  "phone": "123-456-7891",
+  "description": "Biblioteca del sector norte de la ciudad"
+}
+
+### Actualizar biblioteca (ID: 1)
+PUT http://localhost:5000/api/v1/libraries/3
+Content-Type: application/json
+
+{
+  "name": "Biblioteca Central Actualizada",
+  "description": "Descripción actualizada de la biblioteca principal"
+}
+
+### Eliminar biblioteca (ID: 2)
+DELETE http://localhost:5000/api/v1/libraries/3
+
+
+### ========================================
+### BOOKS - Libros
+### ========================================
+
+### Obtener todos los libros
+GET http://localhost:5000/api/v1/books
+
+### Obtener libro por ID (ID: 1 - Cien años de soledad)
+GET http://localhost:5000/api/v1/books/1
+
+### Obtener libro por ID (ID: 2 - 1984)
+GET http://localhost:5000/api/v1/books/2
+
+### Obtener libro por ID (ID: 3 - El principito)
+GET http://localhost:5000/api/v1/books/3
+
+### Obtener préstamos de un libro (ID: 1)
+GET http://localhost:5000/api/v1/books/1/loans
+
+### Obtener géneros de un libro (ID: 1)
+GET http://localhost:5000/api/v1/books/1/genres
+
+### Crear un nuevo libro
+POST http://localhost:5000/api/v1/books
+Content-Type: application/json
+
+{
+  "name": "Don Quijote de la Mancha",
+  "author": "Miguel de Cervantes",
+  "library_id": 1,
+  "description": "Clásico de la literatura española"
+}
+
+### Actualizar libro (ID: 1)
+PUT http://localhost:5000/api/v1/books/1
+Content-Type: application/json
+
+{
+  "name": "Cien años de soledad - Edición especial",
+  "description": "Historia de la familia Buendía - Edición conmemorativa"
+}
+
+### Eliminar libro (ID: 6)
+DELETE http://localhost:5000/api/v1/books/6
+
+
+### ========================================
+### GENRES - Géneros
+### ========================================
+
+### Obtener todos los géneros
+GET http://localhost:5000/api/v1/genres
+
+### Obtener género por ID (ID: 1 - Ficción)
+GET http://localhost:5000/api/v1/genres/1
+
+### Obtener género por ID (ID: 3 - Ciencia Ficción)
+GET http://localhost:5000/api/v1/genres/3
+
+### Obtener género por ID (ID: 5 - Infantil)
+GET http://localhost:5000/api/v1/genres/5
+
+### Obtener libros de un género (ID: 1 - Ficción)
+GET http://localhost:5000/api/v1/genres/1/books
+
+### Crear un nuevo género
+POST http://localhost:5000/api/v1/genres
+Content-Type: application/json
+
+{
+  "name": "Terror",
+  "description": "Libros de terror y suspenso"
+}
+
+### Actualizar género (ID: 1)
+PUT http://localhost:5000/api/v1/genres/1
+Content-Type: application/json
+
+{
+  "name": "Ficción Literaria",
+  "description": "Ficción y literatura general de calidad"
+}
+
+### Eliminar género (ID: 6)
+DELETE http://localhost:5000/api/v1/genres/6
+
+
+### ========================================
+### MEMBERS - Miembros
+### ========================================
+
+### Obtener todos los miembros
+GET http://localhost:5000/api/v1/members
+
+### Obtener miembro por ID (ID: 1 - Juan Carlos Pérez)
+GET http://localhost:5000/api/v1/members/1
+
+### Obtener miembro por ID (ID: 2 - María González)
+GET http://localhost:5000/api/v1/members/2
+
+### Obtener miembro por ID (ID: 3 - Pedro Ramírez)
+GET http://localhost:5000/api/v1/members/3
+
+### Obtener préstamos de un miembro (ID: 1)
+GET http://localhost:5000/api/v1/members/1/loans
+
+### Obtener préstamos activos de un miembro (ID: 1)
+GET http://localhost:5000/api/v1/members/1/active-loans
+
+### Crear un nuevo miembro
+POST http://localhost:5000/api/v1/members
+Content-Type: application/json
+
+{
+  "cc": "1001001004",
+  "names": "Ana María",
+  "last_name": "López",
+  "birthdate": "1992-11-05",
+  "phone": "300-123-4570",
+  "email": "ana.lopez@email.com"
+}
+
+### Actualizar miembro (ID: 1)
+PUT http://localhost:5000/api/v1/members/1
+Content-Type: application/json
+
+{
+  "phone": "300-999-8888",
+  "email": "juan.perez.nuevo@email.com"
+}
+
+### Eliminar miembro (ID: 4)
+DELETE http://localhost:5000/api/v1/members/4
+
+
+### ========================================
+### LOANS - Préstamos
+### ========================================
+
+### Obtener todos los préstamos
+GET http://localhost:5000/api/v1/loans
+
+### Obtener préstamos activos
+GET http://localhost:5000/api/v1/loans/active
+
+### Obtener préstamo por ID (ID: 1 - Préstamo activo)
+GET http://localhost:5000/api/v1/loans/1
+
+### Obtener préstamo por ID (ID: 3 - Préstamo devuelto)
+GET http://localhost:5000/api/v1/loans/3
+
+### Crear un nuevo préstamo
+POST http://localhost:5000/api/v1/loans
+Content-Type: application/json
+
+{
+  "book_id": 4,
+  "member_id": 1
+}
+
+### Devolver un libro (Marcar préstamo como devuelto - ID: 1)
+POST http://localhost:5000/api/v1/loans/1/return
+Content-Type: application/json
+
+
+### Actualizar préstamo (ID: 1)
+PUT http://localhost:5000/api/v1/loans/1
+Content-Type: application/json
+
+{
+  "returned_at": null
+}
+
+### Eliminar préstamo (ID: 4)
+DELETE http://localhost:5000/api/v1/loans/4
+
+
+### ========================================
+### NOTAS
+### ========================================
+
+# Datos de los seeders:
+# 
+# Biblioteca:
+#   - ID 1: Biblioteca Central
+# 
+# Géneros:
+#   - ID 1: Ficción
+#   - ID 2: No Ficción
+#   - ID 3: Ciencia Ficción
+#   - ID 4: Historia
+#   - ID 5: Infantil
+# 
+# Libros:
+#   - ID 1: Cien años de soledad (Gabriel García Márquez)
+#   - ID 2: 1984 (George Orwell)
+#   - ID 3: El principito (Antoine de Saint-Exupéry)
+#   - ID 4: Breve historia del tiempo (Stephen Hawking)
+#   - ID 5: Harry Potter y la piedra filosofal (J.K. Rowling)
+# 
+# Miembros:
+#   - ID 1: Juan Carlos Pérez (CC: 1001001001)
+#   - ID 2: María González (CC: 1001001002)
+#   - ID 3: Pedro Ramírez (CC: 1001001003)
+# 
+# Préstamos:
+#   - ID 1: Libro 1 prestado a Miembro 1 (ACTIVO)
+#   - ID 2: Libro 2 prestado a Miembro 2 (ACTIVO)
+#   - ID 3: Libro 3 prestado a Miembro 3 (DEVUELTO)
