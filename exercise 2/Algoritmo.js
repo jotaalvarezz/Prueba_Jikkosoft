@@ -3,7 +3,7 @@ const { createApp, ref, onMounted, watch } = Vue;
 const app = createApp({
   setup() {
     const destinationNumber = ref(null);
-    const inputValidaton = ref(false)
+    const inputValidaton = ref(false);
     const arrayNumber = ref([]);
     const arrayIndices = ref([]);
 
@@ -14,11 +14,11 @@ const app = createApp({
     };
 
     const searchIndexes = () => {
-      if(!destinationNumber.value){
-        inputValidaton.value = true
+      if (!destinationNumber.value) {
+        inputValidaton.value = true;
       } else {
-        inputValidaton.value = false
-      } 
+        inputValidaton.value = false;
+      }
 
       const matchedIndices = [];
       arrayNumber.value.map((num, index) => {
@@ -27,7 +27,14 @@ const app = createApp({
           if (i != currentIndex) {
             const sum = num + number;
             if (sum === destinationNumber.value) {
-              matchedIndices.push({ value1: currentIndex, value2: i });
+              const exist = matchedIndices.some(
+                (match) =>
+                  (match.value1 === currentIndex && match.value2 === i) ||
+                  (match.value1 === i && match.value2 === currentIndex)
+              );
+              if (!exist) {
+                matchedIndices.push({ value1: currentIndex, value2: i });
+              }
             }
           }
         }
@@ -36,12 +43,12 @@ const app = createApp({
     };
 
     watch(inputValidaton, (newValue) => {
-        if(newValue){
-            setTimeout(() => {
-                return inputValidaton.value = false    
-            }, 2000);
-        }
-    })
+      if (newValue) {
+        setTimeout(() => {
+          return (inputValidaton.value = false);
+        }, 2000);
+      }
+    });
 
     onMounted(() => {
       fillArray();
@@ -53,7 +60,7 @@ const app = createApp({
       arrayNumber,
       arrayIndices,
       fillArray,
-      searchIndexes
+      searchIndexes,
     };
   },
 });
