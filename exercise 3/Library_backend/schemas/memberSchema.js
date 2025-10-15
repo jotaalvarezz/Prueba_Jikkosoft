@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { formatDate } from "../utils/dateFormatter.js";
 
 const memberSchema = z.object({
   cc: z.string({
@@ -19,9 +20,8 @@ const memberSchema = z.object({
     .min(1)
     .max(150),
   
-  birthdate: z.string()
-    .datetime()
-    .or(z.date())
+  birthdate: z.union([z.string(), z.date()])
+    .transform(val => val ? formatDate(val) : null)
     .optional()
     .nullable(),
   

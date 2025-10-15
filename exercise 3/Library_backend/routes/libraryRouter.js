@@ -10,6 +10,7 @@ export const createLibraryRoutes = ({ Library }) => {
   const libraryService = new LibraryService({ libraryRepository });
   const libraryController = new LibraryController({ libraryService });
 
+  router.get('/librares/first', libraryController.getLibrary);
   router.get('/libraries', libraryController.getAll);
   router.get('/libraries/:id', libraryController.findById);
   router.post('/libraries', libraryController.create);

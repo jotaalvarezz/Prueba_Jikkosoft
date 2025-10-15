@@ -9,43 +9,43 @@ module.exports = {
       await queryInterface.bulkInsert('book_genres', [
       {
         book_id: 1,
-        genre_id: 1, // Ficción
+        genre_id: 1,
         created_at: new Date(),
         updated_at: new Date()
       },
       {
         book_id: 2,
-        genre_id: 1, // Ficción
+        genre_id: 1,
         created_at: new Date(),
         updated_at: new Date()
       },
       {
         book_id: 2,
-        genre_id: 3, // Ciencia Ficción
+        genre_id: 3,
         created_at: new Date(),
         updated_at: new Date()
       },
       {
         book_id: 3,
-        genre_id: 5, // Infantil
+        genre_id: 5,
         created_at: new Date(),
         updated_at: new Date()
       },
       {
         book_id: 4,
-        genre_id: 2, // No Ficción
+        genre_id: 2,
         created_at: new Date(),
         updated_at: new Date()
       },
       {
         book_id: 5,
-        genre_id: 1, // Ficción
+        genre_id: 1,
         created_at: new Date(),
         updated_at: new Date()
       },
       {
         book_id: 5,
-        genre_id: 5, // Infantil
+        genre_id: 5,
         created_at: new Date(),
         updated_at: new Date()
       }

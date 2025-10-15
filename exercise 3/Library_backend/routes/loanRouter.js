@@ -11,12 +11,13 @@ export const createLoanRoutes = ({ Loan }) => {
   const loanController = new LoanController({ loanService });
 
   router.get('/loans', loanController.getAll);
+  router.get('/loans/active', loanController.getActiveLoans);
+  router.get('/loans/returned', loanController.getReturnedLoans);
   router.get('/loans/:id', loanController.findById);
   router.post('/loans', loanController.create);
   router.put('/loans/:id', loanController.update);
   router.delete('/loans/:id', loanController.delete);
   router.post('/loans/:id/return', loanController.returnBook);
-  router.get('/loans/active', loanController.getActiveLoans);
 
   return router;
 };

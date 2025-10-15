@@ -66,4 +66,8 @@ export class LoanService {
   getActiveLoans = async () => {
     return await this.loanRepository.findActiveLoans();
   };
+
+  getReturnedLoans = async () => {
+    return await this.loanRepository.findReturnedLoans();
+  }
 }

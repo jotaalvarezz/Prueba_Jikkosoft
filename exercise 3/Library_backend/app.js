@@ -7,7 +7,7 @@ const app = express();
 
 const port = process.env.PORT ?? 5000;
 
-const Domains = ["http://localhost:8080", "http://localhost:5000"];
+const Domains = ["http://localhost:8080", "http://localhost:5000", "http://localhost:5173"];
 
 app.disable("x-powered-by");
 app.use(json());

@@ -20,11 +20,12 @@ const bookSchema = z.object({
   description: z.string()
     .optional()
     .nullable(),
-  
+  //si llega una cadena vacia, latransformo a esa url por defecto
   cover_url: z.string()
-    .url({ message: "Debe ser una URL válida" })
-    .optional()
-    .nullable()
+    .transform(val => val === '' || val === undefined || val === null 
+      ? 'https://picsum.photos/seed/book-1984/300/450' 
+      : val)
+    .default('https://picsum.photos/seed/book-1984/300/450')
 });
 
 // Schema para actualización (todos los campos opcionales)

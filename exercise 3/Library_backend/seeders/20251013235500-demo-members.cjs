@@ -1,9 +1,11 @@
 'use strict';
+const dayjs = require('dayjs');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     const transaction = await queryInterface.sequelize.transaction();
+    const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
 
     try {
       await queryInterface.bulkInsert('members', [
@@ -11,31 +13,31 @@ module.exports = {
         cc: '1001001001',
         names: 'Juan Carlos',
         last_name: 'Pérez',
-        birthdate: new Date('1990-05-15'),
-        phone: '300-123-4567',
+        birthdate: '1990-05-15',
+        phone: '3001234567',
         email: 'juan.perez@email.com',
-        created_at: new Date(),
-        updated_at: new Date()
+        created_at: now,
+        updated_at: now
       },
       {
         cc: '1001001002',
         names: 'María',
         last_name: 'González',
-        birthdate: new Date('1985-08-22'),
-        phone: '300-123-4568',
+        birthdate: '1985-08-22',
+        phone: '3001234568',
         email: 'maria.gonzalez@email.com',
-        created_at: new Date(),
-        updated_at: new Date()
+        created_at: now,
+        updated_at: now
       },
       {
         cc: '1001001003',
         names: 'Pedro',
         last_name: 'Ramírez',
-        birthdate: new Date('1995-03-10'),
-        phone: '300-123-4569',
+        birthdate: '1995-03-10',
+        phone: '3001234569',
         email: 'pedro.ramirez@email.com',
-        created_at: new Date(),
-        updated_at: new Date()
+        created_at: now,
+        updated_at: now
       }
     ], { transaction });
       await transaction.commit();

@@ -28,6 +28,7 @@ Genre.init(
     modelName: 'Genre',
     tableName: 'genres',
     underscored: true,
+    timestamps: true,
   }
 );
 

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { formatDateTime } from "../utils/dateFormatter.js";
 
 const loanSchema = z.object({
   book_id: z.number({
@@ -13,14 +14,12 @@ const loanSchema = z.object({
     .int()
     .positive(),
   
-  loan_date: z.string()
-    .datetime()
-    .or(z.date())
+  loan_date: z.union([z.string(), z.date()])
+    .transform(val => val ? formatDateTime(val) : formatDateTime(new Date()))
     .optional(),
   
-  returned_at: z.string()
-    .datetime()
-    .or(z.date())
+  returned_at: z.union([z.string(), z.date()])
+    .transform(val => val ? formatDateTime(val) : null)
     .optional()
     .nullable()
 });
@@ -30,9 +29,8 @@ const loanUpdateSchema = loanSchema.partial();
 
 // Schema para devolver un libro
 const returnBookSchema = z.object({
-  returned_at: z.string()
-    .datetime()
-    .or(z.date())
+  returned_at: z.union([z.string(), z.date()])
+    .transform(val => val ? formatDateTime(val) : formatDateTime(new Date()))
     .optional()
 });
 

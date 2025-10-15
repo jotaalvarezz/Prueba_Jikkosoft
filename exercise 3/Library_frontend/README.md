@@ -43,11 +43,11 @@ cp env.example .env
 Edita el archivo `.env` según sea necesario:
 
 ```env
-VITE_API_URL=http://localhost:3000
+VITE_API_URL=http://localhost:5000
 VITE_APP_TITLE=Library Management System
 ```
 
-> **Nota:** Si el backend está corriendo en el puerto 3000, no necesitas el archivo `.env`.
+> **Nota:** Si el backend está corriendo en el puerto 5000, no necesitas el archivo `.env`.
 
 ### 3. Iniciar servidor de desarrollo
 
@@ -63,68 +63,12 @@ La aplicación estará disponible en `http://localhost:5173` (o el puerto que Vi
 # Modo desarrollo con hot-reload
 npm run dev
 
-# Compilar para producción
-npm run build
-
-# Previsualizar build de producción
-npm run preview
-
-# Formatear código con Prettier
-npm run format
-```
-
-## 📁 Estructura del Proyecto
-
-```
-Library_frontend/
-├── src/
-│   ├── App.vue           # Componente principal
-│   ├── main.js           # Punto de entrada
-│   ├── router/           # Configuración de rutas
-│   │   └── index.js
-│   └── stores/           # Stores de Pinia
-│       └── counter.js
-├── public/               # Archivos estáticos
-│   └── favicon.ico
-├── index.html            # HTML base
-├── vite.config.js        # Configuración de Vite
-├── jsconfig.json         # Configuración de JavaScript
-└── package.json          # Dependencias
-```
-
-## 🔌 Conectar con el Backend
-
-Asegúrate de que el backend esté corriendo antes de iniciar el frontend:
-
-1. Ve a `../Library_backend`
-2. Inicia Docker: `docker-compose up -d`
-3. Inicia el servidor: `npm run dev`
-4. El backend debe estar en `http://localhost:3000`
-
-## 🎨 Desarrollo
-
-### Recommended IDE Setup
-
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-### Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-### Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
 
 ## ⚠️ Solución de Problemas
 
 ### El frontend no puede conectarse al backend
 
-1. Verifica que el backend esté corriendo en `http://localhost:3000`
+1. Verifica que el backend esté corriendo en `http://localhost:5000`
 2. Revisa la configuración de CORS en el backend
 3. Verifica que la URL del API esté correcta en tu código
 4. Revisa la consola del navegador para ver errores
@@ -142,3 +86,4 @@ Jesus Alvarez
 ## 📄 Licencia
 
 ISC
+```

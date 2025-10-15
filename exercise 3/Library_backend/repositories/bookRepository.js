@@ -1,17 +1,28 @@
+import { Op } from "sequelize";
+
 export class BookRepository {
   constructor({ Book }) {
     this.Book = Book;
   }
 
-  findAll = async () => {
+  findAll = async ({name}) => {
+    const whereClause = {};
+    
+    if (name) {
+      whereClause.name = {
+        [Op.like]: `%${name}%`,
+      };
+    }
+    
     return await this.Book.findAll({
-      include: ['library', 'genres']
+      where: whereClause,
+      include: ["library", "genres"],
     });
   };
 
   findById = async (id) => {
     return await this.Book.findByPk(id, {
-      include: ['library', 'genres', 'loans']
+      include: ["library", "genres", "loans"],
     });
   };
 
@@ -29,17 +40,19 @@ export class BookRepository {
 
   findLoansById = async (id) => {
     const book = await this.Book.findByPk(id, {
-      include: [{
-        association: 'loans',
-        include: ['member']
-      }]
+      include: [
+        {
+          association: "loans",
+          include: ["member"],
+        },
+      ],
     });
     return book;
   };
 
   findGenresById = async (id) => {
     const book = await this.Book.findByPk(id, {
-      include: ['genres']
+      include: ["genres"],
     });
     return book;
   };

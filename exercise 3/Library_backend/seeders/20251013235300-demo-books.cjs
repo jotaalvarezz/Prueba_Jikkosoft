@@ -1,9 +1,11 @@
 'use strict';
+const dayjs = require('dayjs');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     const transaction = await queryInterface.sequelize.transaction();
+    const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
 
     try {
       await queryInterface.bulkInsert('books', [
@@ -13,8 +15,8 @@ module.exports = {
         library_id: 1,
         description: 'Historia de la familia Buendía a lo largo de siete generaciones',
         cover_url: 'https://picsum.photos/seed/book-cien-anos/300/450',
-        created_at: new Date(),
-        updated_at: new Date()
+        created_at: now,
+        updated_at: now
       },
       {
         name: '1984',
@@ -22,8 +24,8 @@ module.exports = {
         library_id: 1,
         description: 'Novela distópica sobre un futuro totalitario',
         cover_url: 'https://picsum.photos/seed/book-1984/300/450',
-        created_at: new Date(),
-        updated_at: new Date()
+        created_at: now,
+        updated_at: now
       },
       {
         name: 'El principito',
@@ -31,8 +33,8 @@ module.exports = {
         library_id: 1,
         description: 'Un clásico de la literatura infantil',
         cover_url: 'https://picsum.photos/seed/book-principito/300/450',
-        created_at: new Date(),
-        updated_at: new Date()
+        created_at: now,
+        updated_at: now
       },
       {
         name: 'Breve historia del tiempo',
@@ -40,8 +42,8 @@ module.exports = {
         library_id: 1,
         description: 'Explicación accesible sobre el universo',
         cover_url: 'https://picsum.photos/seed/book-hawking/300/450',
-        created_at: new Date(),
-        updated_at: new Date()
+        created_at: now,
+        updated_at: now
       },
       {
         name: 'Harry Potter y la piedra filosofal',
@@ -49,8 +51,8 @@ module.exports = {
         library_id: 1,
         description: 'Primera parte de la saga Harry Potter',
         cover_url: 'https://picsum.photos/seed/book-potter/300/450',
-        created_at: new Date(),
-        updated_at: new Date()
+        created_at: now,
+        updated_at: now
       }
     ], { transaction });
       await transaction.commit();

@@ -48,6 +48,7 @@ Loan.init(
     modelName: 'Loan',
     tableName: 'loans',
     underscored: true,
+    timestamps: true,
   }
 );
 

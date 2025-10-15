@@ -45,6 +45,7 @@ Library.init(
     modelName: 'Library',
     tableName: 'libraries',
     underscored: true, // para usar created_at en lugar de createdAt
+    timestamps: true,
   }
 );
 

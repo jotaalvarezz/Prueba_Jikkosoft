@@ -44,6 +44,7 @@ Book.init(
     modelName: 'Book',
     tableName: 'books',
     underscored: true,
+    timestamps: true,
   }
 );
 

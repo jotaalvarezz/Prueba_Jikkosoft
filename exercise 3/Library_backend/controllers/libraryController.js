@@ -5,6 +5,15 @@ export class LibraryController {
     this.libraryService = libraryService;
   }
 
+  getLibrary = async (req, res) => {
+    try {
+      const library = await this.libraryService.getFirstLibrary()
+      res.json(library)
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
+
   getAll = async (req, res) => {
     try {
       const libraries = await this.libraryService.getAllLibraries();

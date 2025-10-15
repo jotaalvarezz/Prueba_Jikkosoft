@@ -3,6 +3,10 @@ export class LibraryService {
     this.libraryRepository = libraryRepository;
   }
 
+  getFirstLibrary = async () => {
+    return await this.libraryRepository.findOne()
+  };
+
   getAllLibraries = async () => {
     return await this.libraryRepository.findAll();
   };

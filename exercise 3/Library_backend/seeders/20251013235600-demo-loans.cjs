@@ -1,12 +1,13 @@
 'use strict';
+const dayjs = require('dayjs');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     const transaction = await queryInterface.sequelize.transaction();
     try {
-      const now = new Date();
-      const lastWeek = new Date(now.getTime() - (7 * 24 * 60 * 60 * 1000));
+      const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
+      const lastWeek = dayjs().subtract(7, 'day').format('YYYY-MM-DD HH:mm:ss');
 
       await queryInterface.bulkInsert('loans', [
       {
@@ -14,24 +15,24 @@ module.exports = {
         member_id: 1,
         loan_date: lastWeek,
         returned_at: null, // Préstamo activo
-        created_at: new Date(),
-        updated_at: new Date()
+        created_at: now,
+        updated_at: now
       },
       {
         book_id: 2,
         member_id: 2,
         loan_date: lastWeek,
         returned_at: null, // Préstamo activo
-        created_at: new Date(),
-        updated_at: new Date()
+        created_at: now,
+        updated_at: now
       },
       {
         book_id: 3,
         member_id: 3,
         loan_date: lastWeek,
         returned_at: now, // Préstamo devuelto
-        created_at: new Date(),
-        updated_at: new Date()
+        created_at: now,
+        updated_at: now
       }
       ], { transaction });
       await transaction.commit();

@@ -3,17 +3,17 @@ export class BookService {
     this.bookRepository = bookRepository;
   }
 
-  getAllBooks = async () => {
-    return await this.bookRepository.findAll();
+  getAllBooks = async ({ name }) => {
+    return await this.bookRepository.findAll({ name });
   };
 
   getBookById = async (id) => {
     const book = await this.bookRepository.findById(id);
-    
+
     if (!book) {
-      throw new Error('Libro no encontrado');
+      throw new Error("Libro no encontrado");
     }
-    
+
     return book;
   };
 
@@ -23,9 +23,9 @@ export class BookService {
 
   updateBook = async (id, data) => {
     const book = await this.bookRepository.findById(id);
-    
+
     if (!book) {
-      throw new Error('Libro no encontrado');
+      throw new Error("Libro no encontrado");
     }
 
     return await this.bookRepository.update(book, data);
@@ -33,9 +33,9 @@ export class BookService {
 
   deleteBook = async (id) => {
     const book = await this.bookRepository.findById(id);
-    
+
     if (!book) {
-      throw new Error('Libro no encontrado');
+      throw new Error("Libro no encontrado");
     }
 
     await this.bookRepository.delete(book);
@@ -43,21 +43,21 @@ export class BookService {
 
   getBookLoans = async (id) => {
     const book = await this.bookRepository.findLoansById(id);
-    
+
     if (!book) {
-      throw new Error('Libro no encontrado');
+      throw new Error("Libro no encontrado");
     }
-    
+
     return book.loans;
   };
 
   getBookGenres = async (id) => {
     const book = await this.bookRepository.findGenresById(id);
-    
+
     if (!book) {
-      throw new Error('Libro no encontrado');
+      throw new Error("Libro no encontrado");
     }
-    
+
     return book.genres;
   };
 

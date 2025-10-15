@@ -3,6 +3,10 @@ export class LibraryRepository {
     this.Library = Library;
   }
 
+  findOne = async () => {
+    return await this.Library.findOne();
+  }
+
   findAll = async () => {
     return await this.Library.findAll({
       include: ['books']

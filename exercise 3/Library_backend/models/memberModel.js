@@ -54,6 +54,7 @@ Member.init(
     modelName: 'Member',
     tableName: 'members',
     underscored: true,
+    timestamps: true,
   }
 );
 
